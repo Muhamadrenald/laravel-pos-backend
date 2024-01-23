@@ -45,9 +45,38 @@ class UserController extends Controller
         return view('pages.users.edit', compact('user'));
     }
 
+    // public function update(UpdateUserRequest $request, User $user)
+    // {
+    //     $data = $request->validated();
+    //     $user->update($data);
+    //     return redirect()->route('user.index')->with('success', 'User successfully updated');
+    // }
     public function update(UpdateUserRequest $request, User $user)
     {
-        $data = $request->validated();
+        $data = $request->validate([
+            'name' => 'required',
+            'email' => 'required|email',
+            'password' => 'nullable|min:8', // Validasi password baru
+            'new_confirm_password' => 'nullable|min:8|same:password', // Validasi konfirmasi password baru
+            'phone' => 'nullable|numeric',
+            'roles' => 'required|in:admin,staff,user',
+        ], [
+            'password.min' => 'The password must be at least 8 characters.',
+            'new_confirm_password.same' => 'The new password confirmation must match the entered password.',
+            'password.required' => 'The password field is required.',
+            'password.min' => 'The password must be at least 8 characters.',
+            'new_confirm_password.required' => 'The new password confirmation field is required.',
+            'new_confirm_password.min' => 'The new password confirmation must be at least 8 characters.'
+        ]);
+
+        // Jika password baru tidak kosong, hash password baru
+        if (!empty($data['password'])) {
+            $data['password'] = Hash::make($data['password']);
+        } else {
+            // Jika tidak ada perubahan pada password, hapus kunci password dari data yang akan diupdate
+            unset($data['password']);
+        }
+
         $user->update($data);
         return redirect()->route('user.index')->with('success', 'User successfully updated');
     }

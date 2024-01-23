@@ -33,7 +33,11 @@
                     <form action="{{ route('product.store') }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         <div class="card-header">
-                            <h4>Input Text</h4>
+                            {{-- <h4>Input Text</h4> --}}
+                            <h4>===></h4>
+                            <div class="section-header-button">
+                                <a href="{{ route('product.index') }}" class="btn btn-primary">Kembali</a>
+                            </div>
                         </div>
                         <div class="card-body">
                             <div class="form-group">

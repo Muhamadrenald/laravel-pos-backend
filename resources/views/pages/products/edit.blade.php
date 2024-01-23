@@ -30,11 +30,15 @@
 
 
                 <div class="card">
-                    <form action="{{ route('product.update', $product) }}" method="POST">
+                    <form action="{{ route('product.update', $product) }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         @method('PUT')
                         <div class="card-header">
-                            <h4>Input Text</h4>
+                            {{-- <h4>Input Text</h4> --}}
+                            <h4>===></h4>
+                            <div class="section-header-button">
+                                <a href="{{ route('product.index') }}" class="btn btn-primary">Kembali</a>
+                            </div>
                         </div>
                         <div class="card-body">
                             <div class="form-group">
@@ -76,6 +80,20 @@
                                     </div>
                                 @enderror
                             </div>
+
+                            <div class="form-group">
+                                <label>Photo Product</label>
+                                <div class="col-sm-9">
+                                    <input type="file" class="form-control" name="image"
+                                        @error('image') is-invalid @enderror>
+                                </div>
+                                @error('image')
+                                    <div class="invalid-feedback">
+                                        {{ $message }}
+                                    </div>
+                                @enderror
+                            </div>
+
                             <div class="form-group">
                                 <label class="form-label">Category</label>
                                 <div class="selectgroup w-100">
@@ -96,6 +114,8 @@
                                     </label>
 
                                 </div>
+
+
                             </div>
                         </div>
                         <div class="card-footer text-right">
