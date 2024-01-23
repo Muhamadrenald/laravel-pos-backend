@@ -70,10 +70,58 @@ class ProductController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
-    {
-        //
-    }
+    // public function update(Request $request, $id)
+    // {
+    //     $request->validate([
+    //         'name' => 'required|min:3|unique:products,name,' . $id,
+    //         'image' => 'image|mimes:png,jpg,jpeg'
+    //     ]);
+
+    //     $product = \App\Models\Product::findOrFail($id);
+
+    //     if ($request->hasFile('image')) {
+    //         Storage::delete('public/products/' . $product->image);
+    //         $filename = time() . '.' . $request->image->extension();
+    //         $request->image->storeAs('public/products', $filename);
+    //         $product->update([
+    //             'name' => $request->name,
+    //             'description' => $request->description,
+    //             'price' => $request->price,
+    //             'stock' => $request->stock,
+    //             'category' => $request->category,
+    //             'image' => $filename,
+    //         ]);
+    //     } else {
+    //         $product->update([
+    //             'name' => $request->name,
+    //             'description' => $request->description,
+    //             'price' => $request->price,
+    //             'stock' => $request->stock,
+    //             'category' => $request->category,
+    //         ]);
+    //     }
+    //     return redirect()->route('product.index')->with('success', 'product berhasil diupdate');
+    // }
+
+    // public function update(Request $request, $id)
+    // {
+    //     $imagePath = Product::find($id)->image;
+
+    //     if ($request->hasFile('image')) {
+    //         if ($imagePath && Storage::disk('public')->exists($imagePath)) {
+    //             Storage::disk('public')->delete($imagePath);
+    //         }
+    //     }
+
+    //     $filename = time() . '.' . $request->image->extension();
+    //     $request->image->storeAs('public/products', $filename);
+
+    //     $data = $request->all();
+    //     $product = Product::findOrFail($id);
+    //     $data['image'] = $filename;
+    //     $product->update($data);
+    //     return redirect()->route('product.index')->with('success', 'Product successfully updated');
+    // }
 
     /**
      * Remove the specified resource from storage.

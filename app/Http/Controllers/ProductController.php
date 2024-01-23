@@ -32,10 +32,11 @@ class ProductController extends Controller
     {
         $request->validate([
             'name' => 'required|min:3|unique:products',
+            // 'description' => 'required|min:10',
             'price' => 'required|integer',
             'stock' => 'required|integer',
             'category' => 'required|in:food,drink,snack',
-            'image' => 'required|image|mimes:png,jpg,jpeg'
+            'image' => 'required|image|mimes:png,jpg,jpeg,webp'
         ]);
 
         $filename = time() . '.' . $request->image->extension();

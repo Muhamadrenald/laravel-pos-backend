@@ -1,6 +1,6 @@
 @extends('layouts.auth')
 
-@section('title', 'Register CBT')
+@section('title', 'Register POS')
 
 @push('style')
     <!-- CSS Libraries -->
@@ -17,8 +17,8 @@
             <form method="POST" action="{{ route('register') }}">
                 @csrf
                 <div class="form-group">
-                    <label for="frist_name">Name</label>
-                    <input id="frist_name" type="text"
+                    <label for="first_name">Name</label>
+                    <input id="first_name" type="text"
                         class="form-control @error('name')
                         is-invalid
                     @enderror"

@@ -1,8 +1,8 @@
 <?php
 
-use App\Http\Controllers\SoalController;
+// use App\Http\Controllers\SoalController;
 use App\Http\Controllers\UserController;
-use App\Models\Soal;
+// use App\Models\Soal;
 use Illuminate\Support\Facades\Route;
 
 /*
