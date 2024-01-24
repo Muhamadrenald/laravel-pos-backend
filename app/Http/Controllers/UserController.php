@@ -30,15 +30,47 @@ class UserController extends Controller
     }
 
     // public function store(StoreUserRequest $request)
+    // public function store(Request $request)
+    // {
+    //     // dd($request->all());
+
+    //     $data = $request->all();
+    //     $data['password'] = Hash::make($request->password);
+    //     \App\Models\User::create($data);
+    //     return redirect()->route('user.index')->with('success', 'User successfully created');
+    // }
     public function store(Request $request)
     {
-        // dd($request->all());
+        $userData = $request->validate([
+            'name' => 'required',
+            'email' => 'required|email',
+            'password' => 'required|confirmed',
+            'phone' => 'required',
+            // Tambahkan validasi untuk data user lainnya jika diperlukan
+        ], [
+            'name.required' => 'Nama harus diisi.',
+            'email.required' => 'Email harus diisi.',
+            'email.email' => 'Format email tidak valid.',
+            'password.required' => 'Password harus diisi.',
+            'password.confirmed' => 'Konfirmasi password tidak cocok.',
+            'phone.required' => 'No Telphon harus diisi.',
+            // Sesuaikan pesan error sesuai kebutuhan
+        ]);
 
-        $data = $request->all();
-        $data['password'] = Hash::make($request->password);
-        \App\Models\User::create($data);
+        // Simpan data ke database
+        $userData = \App\Models\User::create([
+            'name' => $userData['name'],
+            'email' => $userData['email'],
+            'password' => Hash::make($userData['password']),
+            'phone' => $userData['phone'],
+            // Tambahkan kolom lain sesuai kebutuhan
+        ]);
+
         return redirect()->route('user.index')->with('success', 'User successfully created');
+
+        // ... kode lainnya untuk menyimpan data ...
     }
+
 
     public function edit($id)
     {

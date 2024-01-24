@@ -46,7 +46,7 @@
                                     class="form-control @error('name')
                                 is-invalid
                             @enderror"
-                                    name="name">
+                                    name="name" value="{{ old('name') }}">
                                 @error('name')
                                     <div class="invalid-feedback">
                                         {{ $message }}
@@ -59,7 +59,7 @@
                                     class="form-control @error('email')
                                 is-invalid
                             @enderror"
-                                    name="email">
+                                    name="email" value="{{ old('email') }}">
                                 @error('email')
                                     <div class="invalid-feedback">
                                         {{ $message }}
@@ -87,8 +87,28 @@
                                 @enderror
                             </div>
                             <div class="form-group">
-                                <label>Phone</label>
-                                <input type="number" class="form-control" name="phone">
+                                <label>Confirm Password</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <div class="input-group-text">
+                                            <i class="fas fa-lock"></i>
+                                        </div>
+                                    </div>
+                                    <input type="password" class="form-control" name="password_confirmation">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label>No Telhpone</label>
+                                <input type="number"
+                                    class="form-control @error('phone')
+                                is-invalid
+                            @enderror"
+                                    name="phone" value="{{ old('phone') }}">
+                                @error('phone')
+                                    <div class="invalid-feedback">
+                                        {{ $message }}
+                                    </div>
+                                @enderror
                             </div>
                             <div class="form-group">
                                 <label class="form-label">Roles</label>
