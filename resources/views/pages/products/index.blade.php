@@ -65,6 +65,7 @@
                                     <table class="table-striped table">
                                         <tr>
 
+                                            <th>#</th>
                                             <th>Name</th>
                                             <th>Category</th>
                                             <th>Price</th>
@@ -72,10 +73,13 @@
                                             <th>Created At</th>
                                             <th>Action</th>
                                         </tr>
+                                        <?php $no = 1; ?>
                                         @foreach ($products as $product)
                                             <tr>
 
-                                                <td>{{ $product->name }}
+                                                <td>{{ $no }}</td>
+                                                <td>
+                                                    {{ $product->name }}
                                                 </td>
                                                 <td>
                                                     {{ $product->category }}
@@ -113,6 +117,7 @@
                                                     </div>
                                                 </td>
                                             </tr>
+                                            <?php $no++; ?>
                                         @endforeach
 
 
