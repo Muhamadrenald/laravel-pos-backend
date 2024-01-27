@@ -11,11 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('products', function (Blueprint $table) {
-            //
-            $table->dropColumn('is_favorite');
-            $table->boolean('is_best_seller')->default(false);
-        });
+        // Schema::table('products', function (Blueprint $table) {
+        //     //
+        //     $table->dropColumn('is_favorite');
+        //     $table->boolean('is_best_seller')->default(false);
+        // });
     }
 
     /**
@@ -23,9 +23,9 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('products', function (Blueprint $table) {
-            // is_best_seller
-            $table->dropColumn('is_best_seller');
-        });
+        // Schema::table('products', function (Blueprint $table) {
+        //     // is_best_seller
+        //     $table->dropColumn('is_best_seller');
+        // });
     }
 };

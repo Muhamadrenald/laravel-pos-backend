@@ -73,13 +73,13 @@
                                             <th>Created At</th>
                                             <th>Action</th>
                                         </tr>
-                                        <?php $no = 1; ?>
                                         @foreach ($products as $product)
                                             <tr>
 
-                                                <td>{{ $no }}</td>
-                                                <td>
-                                                    {{ $product->name }}
+                                                <td>{{ $loop->iteration }}</td>
+                                                {{-- <td>{{ $loop->index }}</td> --}}
+                                                {{-- <?php $index++; ?> --}}
+                                                <td>{{ $product->name }}
                                                 </td>
                                                 <td>
                                                     {{ $product->category }}
@@ -117,7 +117,6 @@
                                                     </div>
                                                 </td>
                                             </tr>
-                                            <?php $no++; ?>
                                         @endforeach
 
 
