@@ -1,6 +1,8 @@
 <?php
 
 // use App\Http\Controllers\SoalController;
+
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\UserController;
 // use App\Models\Soal;
 use Illuminate\Support\Facades\Route;
@@ -28,8 +30,13 @@ Route::middleware(['auth'])->group(function () {
     Route::get('home', function () {
         return view('pages.dashboard');
     })->name('home');
+    // dashboard
+    Route::get('dashboard', [DashboardController::class, 'index']);
+    // user
     Route::resource('user', UserController::class);
+    // product
     Route::resource('product', \App\Http\Controllers\ProductController::class);
+    // soal
     // Route::resource('soal', SoalController::class);
-    // Route::resource('order', \App\Http\Controllers\OrderController::class);
+    Route::resource('order', \App\Http\Controllers\OrderController::class);
 });
